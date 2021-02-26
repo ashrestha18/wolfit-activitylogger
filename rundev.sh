@@ -1,3 +1,5 @@
 #!/bin/bash
 export WOLFIT_SETTINGS=$(pwd)/dev.settings
-flask run --host=0.0.0.0
+flask db upgrade
+python load_reddit_posts.py
+gunicorn app:app
